@@ -25,14 +25,14 @@ class Products extends Component {
     const { productItems } = this.state;
     if (productItems.length === 0) return <h1>loading</h1>;
     return (
-      <div>
+      <>
         {this.renderProductItems()}
         <PageNation
           items={productItems}
           trimNumber={5}
           onChagePage={this.handleChangePage}
         />
-      </div>
+      </>
     )
   }
 }
