@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ProductItem = ({ title, coverImage, price }) => {
   return (
     <div>
-      <img src={coverImage} alt={title}/>
+      <img src={coverImage} alt={title} />
       <h3>{title}</h3>
       <p>{price}</p>
     </div>
