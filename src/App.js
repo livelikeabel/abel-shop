@@ -31,7 +31,7 @@ const App = () => {
     <>
       <ShopContext.Provider value={{ wishlist, setWishlist }}>
         <Router>
-          <div>
+          <div className="App">
             <Route exact path="/" component={Main} />
             <Route path="/products" component={Products} />
             <Route path="/wishlist" component={Wishlist} />
