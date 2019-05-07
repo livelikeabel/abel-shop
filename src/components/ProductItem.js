@@ -4,15 +4,15 @@ import Button from './Button';
 import { ShopContext } from '../App.js';
 import './ProductItem.scss';
 
-const ProductItem = item => {
-  const { id, title, coverImage, price } = item;
+const ProductItem = product => {
+  const { id, title, coverImage, price } = product;
   const { wishlist, setWishlist } = useContext(ShopContext);
 
   const toggleItem = id => {
-    const callback = item => item.id !== id;
+    const callback = ({ product }) => product.id !== id;
     wishlist.every(callback) ?
       wishlist.length < 3 ?
-        setWishlist([...wishlist, item]) :
+        setWishlist([...wishlist, { product, selected: true, quantity: 1 }]) :
         alert('장바구니는 3개까지만 담을 수 있어요 :)') :
       setWishlist(wishlist.filter(callback))
   };
@@ -23,7 +23,7 @@ const ProductItem = item => {
       <h3>{title}</h3>
       <p>{price}</p>
       <Button onClick={toggleItem.bind(this, id)}>
-        {wishlist.every(v => v.id !== id) ? '담기' : '빼기'}
+        {wishlist.every(({product}) => product.id !== id) ? '담기' : '빼기'}
       </Button>
     </div>
   );

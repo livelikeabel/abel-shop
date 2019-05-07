@@ -3,6 +3,7 @@ import ProductItem from '../../components/ProductItem';
 import PageNation from '../../components/PageNation';
 import { simpleFetch } from '../../utils';
 
+// react16의 함수형 컴포넌트로 바꾸기
 class Products extends Component {
   state = { productItems: [], pageItems: [], currentPage: 1 };
 
@@ -17,8 +18,8 @@ class Products extends Component {
     this.setState(() => ({ pageItems }))
   }
 
-  renderProductItems = () => (
-    this.state.pageItems.map(item => <ProductItem key={item.id} {...item} />)
+  renderProducts = () => (
+    this.state.pageItems.map(product => <ProductItem key={product.id} {...product} />)
   )
 
   render() {
@@ -26,7 +27,7 @@ class Products extends Component {
     if (productItems.length === 0) return <h1>loading</h1>;
     return (
       <>
-        {this.renderProductItems()}
+        {this.renderProducts()}
         <PageNation
           items={productItems}
           trimNumber={5}

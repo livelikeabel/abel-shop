@@ -2,16 +2,23 @@ import React from 'react';
 import './WishItem.scss';
 
 const WishItem = ({ item, coupons }) => {
-  const { id, title, coverImage, price } = item;
+  const {
+    product: { id, title, coverImage, price },
+    selected, quantity
+  } = item;
   return (
     <div className="WishItem">
-      <input type="checkbox" />
+      <input type="checkbox" checked={selected}/>
       <img src={coverImage} alt={title} />
       <div className="WishItem__mid">
         <p className="WishItem__mid__title">{title}</p>
         <p className="WishItem__mid__price">{price}<span>원</span></p>
       </div>
-      <input className="WishItem__count" type="number" />
+      <input
+        className="WishItem__count"
+        type="number"
+        value={quantity}
+        />
       <select className="WishItem__select">
         <option>쿠폰을 선택 하세요</option>
         {coupons.map(c => (

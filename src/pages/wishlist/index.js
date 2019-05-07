@@ -20,7 +20,7 @@ const Wishlist = () => {
       <div className="Wishlist__wishItem-wrapper">
         <h1>장바구니</h1>
         {wishlist.map(item => (
-          <WishItem item={item} coupons={coupons} key={item.id} />)
+          <WishItem item={item} coupons={coupons} key={item.product.id} />)
         )}
       </div>
       <Price />
