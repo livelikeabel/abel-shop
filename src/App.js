@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Main from './pages/main';
 import Products from './pages/products';
 import Wishlist from './pages/wishlist';
+import Header from './components/Header';
 
 import './App.scss';
 
@@ -23,7 +24,7 @@ const App = () => {
       coverImage: 'https://cdn.class101.net/images/ec0f0c15-aeec-43a3-a0c9-b649b0999f0a',
       price: 320000,
       score: 300,
-  
+
     }
   ]);
 
@@ -31,6 +32,7 @@ const App = () => {
     <>
       <ShopContext.Provider value={{ wishlist, setWishlist }}>
         <Router>
+          <Header />
           <div className="App">
             <Route exact path="/" component={Main} />
             <Route path="/products" component={Products} />
