@@ -90,7 +90,12 @@ const WishItem = ({ item, coupons }) => {
         }
       </select>
       <div className="WishItem__button-wrapper">
-        <Button onClick={removeWishlist.bind(this, id)}>빼기</Button>
+        <Button
+          onClick={removeWishlist.bind(this, id)}
+          style={{ background: 'tomato' }}
+        >
+          빼기
+        </Button>
       </div>
     </div>
   )

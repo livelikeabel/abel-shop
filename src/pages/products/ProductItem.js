@@ -17,17 +17,21 @@ const ProductItem = product => {
       setWishlist(wishlist.filter(callback))
   };
 
+  const isHave = wishlist.some(({ product }) => product.id === id);
   return (
     <div className="ProductItem">
       <img src={coverImage} alt={title} />
       <h3 className="ProductItem__title">{title}</h3>
       <p className="ProductItem__price">{price}원</p>
       <div className="ProductItem__button-wrapper">
-        <Button onClick={toggleItem.bind(this, id)}>
-          {wishlist.every(({ product }) => product.id !== id) ? '담기' : '빼기'}
+        <Button
+          onClick={toggleItem.bind(this, id)}
+          style={isHave ? { background: 'tomato' } : null}
+        >
+          {isHave ? '빼기' : '담기'}
         </Button>
       </div>
-    </div>
+    </div >
   );
 };
 

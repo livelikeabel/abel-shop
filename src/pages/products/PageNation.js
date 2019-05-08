@@ -11,9 +11,16 @@ const PageNation = ({ items, trimNumber, onChagePage }) => {
     onChagePage(items.slice(0, trimNumber))
   }, []);
 
+  const setScrollTop = () => {
+    const { documentElement, body } = document;
+    if (documentElement) documentElement.scrollTop = 0;
+    // Safari
+    body.scrollTop = 0;
+  }
 
-  const renderNum = () => {
-    return items.length !== 0 ?
+  return (
+    <ul className="PageNation">
+      {items.length !== 0 ?
       new Array(pageNum)
         .fill(null)
         .map((_, i) => {
@@ -24,16 +31,12 @@ const PageNation = ({ items, trimNumber, onChagePage }) => {
               onClick={() => {
                 onChagePage(items.slice(trimNumber * i, trimNumber * i + 5))
                 setCurrentPage(page)
+                setScrollTop()
               }}
               key={i}>
               {page}
             </li>)
-        }) : null;
-  }
-
-  return (
-    <ul className="PageNation">
-      {renderNum()}
+        }) : null}
     </ul>
   )
 }
