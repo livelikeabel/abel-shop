@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ShopContext } from '../../App';
+import Button from '../../components/Button';
 import './WishItem.scss';
 
 const WishItem = ({ item, coupons }) => {
@@ -38,6 +39,10 @@ const WishItem = ({ item, coupons }) => {
         item;
     })
     setWishlist(changed);
+  }
+
+  const removeWishlist = id => {
+    setWishlist(wishlist.filter(({ product }) => product.id !== id))
   }
 
   const renderCouopns = () => {
@@ -83,6 +88,9 @@ const WishItem = ({ item, coupons }) => {
           renderCouopns()
         }
       </select>
+      <div className="WishItem__button-wrapper">
+        <Button onClick={removeWishlist.bind(this, id)}>빼기</Button>
+      </div>
     </div>
   )
 }

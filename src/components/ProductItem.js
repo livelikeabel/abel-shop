@@ -22,9 +22,11 @@ const ProductItem = product => {
       <img src={coverImage} alt={title} />
       <h3>{title}</h3>
       <p>{price}</p>
-      <Button onClick={toggleItem.bind(this, id)}>
-        {wishlist.every(({ product }) => product.id !== id) ? '담기' : '빼기'}
-      </Button>
+      <div className="ProductItem__button-wrapper">
+        <Button onClick={toggleItem.bind(this, id)}>
+          {wishlist.every(({ product }) => product.id !== id) ? '담기' : '빼기'}
+        </Button>
+      </div>
     </div>
   );
 };

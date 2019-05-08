@@ -1,6 +1,10 @@
 .ProductItem {
+  position: relative;
   img {
     width: 250px;
     height: 150px;
+  }
+  .button-wrapper {
+    position: absolute;
   }
 }
