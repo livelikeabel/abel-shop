@@ -12,7 +12,7 @@ const ProductItem = product => {
     const callback = ({ product }) => product.id !== id;
     wishlist.every(callback) ?
       wishlist.length < 3 ?
-        setWishlist([...wishlist, { product, selected: true, quantity: 1 }]) :
+        setWishlist([...wishlist, { product, selected: true, quantity: 1, coupon: { type: '', discount: 0 } }]) :
         alert('장바구니는 3개까지만 담을 수 있어요 :)') :
       setWishlist(wishlist.filter(callback))
   };
@@ -23,7 +23,7 @@ const ProductItem = product => {
       <h3>{title}</h3>
       <p>{price}</p>
       <Button onClick={toggleItem.bind(this, id)}>
-        {wishlist.every(({product}) => product.id !== id) ? '담기' : '빼기'}
+        {wishlist.every(({ product }) => product.id !== id) ? '담기' : '빼기'}
       </Button>
     </div>
   );

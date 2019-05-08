@@ -5,7 +5,7 @@ import './WishItem.scss';
 const WishItem = ({ item, coupons }) => {
   const { wishlist, setWishlist } = useContext(ShopContext);
   const {
-    product: { id, title, coverImage, price },
+    product: { id, title, coverImage, price, availableCoupon },
     selected, quantity
   } = item;
 
@@ -16,7 +16,7 @@ const WishItem = ({ item, coupons }) => {
         { ...item, selected: !selected } :
         item;
     })
-    setWishlist(toggled)
+    setWishlist(toggled);
   }
 
   const handleChangeCount = (id, { target: { value } }) => {
@@ -26,7 +26,34 @@ const WishItem = ({ item, coupons }) => {
         { ...item, quantity: value } :
         item;
     })
-    setWishlist(changed)
+    setWishlist(changed);
+  }
+
+  const handleChangeCoupon = (id, { target: { value } }) => {
+    const [type, discount] = value.split(',');
+    const changed = wishlist.map(item => {
+      const { product } = item;
+      return product.id === id ?
+        { ...item, coupon: { type, discount: +discount } } :
+        item;
+    })
+    setWishlist(changed);
+  }
+
+  const renderCouopns = () => {
+    return (
+      <>
+        <option value="none, 0">쿠폰을 선택 하세요</option>
+        {coupons.map(c => (
+          <option
+            value={[c.type, c.discountRate || c.discountAmount]}
+            key={c.title}
+          >
+            {c.title}
+          </option>
+        ))}
+      </>
+    )
   }
 
   return (
@@ -49,17 +76,12 @@ const WishItem = ({ item, coupons }) => {
       />
       <select
         className="WishItem__select"
-        onChange={() => { console.log("select!") }}
+        onChange={handleChangeCoupon.bind(this, id)}
       >
-        <option>쿠폰을 선택 하세요</option>
-        {coupons.map(c => (
-          <option
-            value={c.discountRate || c.discountAmount}
-            key={c.title}
-          >
-            {c.title}
-          </option>
-        ))}
+        {availableCoupon === false ?
+          <option>쿠폰을 사용할 수 없는 제품이에요 ㅠㅠ</option> :
+          renderCouopns()
+        }
       </select>
     </div>
   )

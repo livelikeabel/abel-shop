@@ -20,7 +20,8 @@ const App = () => {
         score: 200,
       },
       selected: true,
-      quantity: 1
+      quantity: 1,
+      coupon: { type: '', discount: 0 }
     },
     {
       product: {
@@ -31,7 +32,8 @@ const App = () => {
         score: 300,
       },
       selected: true,
-      quantity: 1
+      quantity: 1,
+      coupon: { type: '', discount: 0 }
     }
   ]);
 
