@@ -6,7 +6,7 @@ const data = { coupons, productItems };
 const simpleFetch = dataName => new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve(data[dataName]);
-  }, 500);
+  }, 1500);
 });
 
 export {simpleFetch};

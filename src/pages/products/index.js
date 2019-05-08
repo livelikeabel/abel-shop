@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductItem from './ProductItem';
 import PageNation from './PageNation';
 import { simpleFetch } from '../../utils';
+import Loading from '../../components/Loading';
 
 // react16의 함수형 컴포넌트로 바꾸기
 class Products extends Component {
@@ -24,7 +25,7 @@ class Products extends Component {
 
   render() {
     const { productItems } = this.state;
-    if (productItems.length === 0) return <h1>loading</h1>;
+    if (productItems.length === 0) return <Loading/>;
     return (
       <>
         {this.renderProducts()}

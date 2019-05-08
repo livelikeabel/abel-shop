@@ -11,6 +11,15 @@
     width: 600px;
     padding: 0 0 30px;
     border-bottom: 1px solid #000;
+    &__explain {
+      font-size: 25px;
+      line-height: 300px;
+      text-align: center;
+      a {
+        text-decoration: none;
+        color: grey;
+      }
+    }
   }
   &__coupons {
     display: flex;
