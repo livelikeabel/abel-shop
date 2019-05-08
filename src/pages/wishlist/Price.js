@@ -6,8 +6,9 @@ const Price = () => {
   const { wishlist } = useContext(ShopContext);
 
   const getTotalPrice = () => wishlist.reduce(
-    (totalPrice, { product: { price }, selected }) => {
-      return selected ? totalPrice + price : totalPrice;
+    (totalPrice, { product: { price }, selected, quantity }) => {
+      return selected ? totalPrice + (price * quantity) :
+        totalPrice;
     }, 0);
 
   return (

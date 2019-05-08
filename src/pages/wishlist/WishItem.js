@@ -19,6 +19,16 @@ const WishItem = ({ item, coupons }) => {
     setWishlist(toggled)
   }
 
+  const handleChangeCount = (id, { target: { value } }) => {
+    const changed = wishlist.map(item => {
+      const { product } = item;
+      return product.id === id ?
+        { ...item, quantity: value } :
+        item;
+    })
+    setWishlist(changed)
+  }
+
   return (
     <div className="WishItem">
       <input
@@ -35,7 +45,7 @@ const WishItem = ({ item, coupons }) => {
         className="WishItem__count"
         type="number"
         value={quantity}
-        onChange={() => { console.log('수량') }}
+        onChange={handleChangeCount.bind(this, id)}
       />
       <select
         className="WishItem__select"
