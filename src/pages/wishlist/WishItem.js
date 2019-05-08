@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ShopContext } from '../../App';
 import './WishItem.scss';
 
 const WishItem = ({ item, coupons }) => {
+  const { wishlist, setWishlist } = useContext(ShopContext);
   const {
     product: { id, title, coverImage, price },
     selected, quantity
   } = item;
+
+  const toggleSelected = id => {
+    const toggled = wishlist.map((item) => {
+      const { product, selected } = item;
+      return product.id === id ?
+        { ...item, selected: !selected } :
+        item;
+    })
+    setWishlist(toggled)
+  }
+
   return (
     <div className="WishItem">
-      <input type="checkbox" checked={selected}/>
+      <input
+        type="checkbox"
+        checked={selected}
+        onChange={toggleSelected.bind(this, id)}
+      />
       <img src={coverImage} alt={title} />
       <div className="WishItem__mid">
         <p className="WishItem__mid__title">{title}</p>
@@ -18,8 +35,12 @@ const WishItem = ({ item, coupons }) => {
         className="WishItem__count"
         type="number"
         value={quantity}
-        />
-      <select className="WishItem__select">
+        onChange={() => { console.log('수량') }}
+      />
+      <select
+        className="WishItem__select"
+        onChange={() => { console.log("select!") }}
+      >
         <option>쿠폰을 선택 하세요</option>
         {coupons.map(c => (
           <option
