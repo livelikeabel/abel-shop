@@ -1,6 +1,10 @@
 .PageNation {
   display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
   li {
+    font-size: 20px;
     width: 30px;
     height: 30px;
     text-align: center;
@@ -9,5 +13,5 @@
 }
 
 .active {
-  color: red;
+  color: #027dbf;
 }

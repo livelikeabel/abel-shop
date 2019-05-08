@@ -64,6 +64,7 @@ const WishItem = ({ item, coupons }) => {
   return (
     <div className="WishItem">
       <input
+        className="WishItem__checkbox"
         type="checkbox"
         checked={selected}
         onChange={toggleSelected.bind(this, id)}

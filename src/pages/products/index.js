@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ProductItem from '../../components/ProductItem';
-import PageNation from '../../components/PageNation';
+import ProductItem from './ProductItem';
+import PageNation from './PageNation';
 import { simpleFetch } from '../../utils';
 
 // react16의 함수형 컴포넌트로 바꾸기

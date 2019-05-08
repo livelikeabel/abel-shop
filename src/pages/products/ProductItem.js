@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
-import { ShopContext } from '../App.js';
+import Button from '../../components/Button';
+import { ShopContext } from '../../App.js';
 import './ProductItem.scss';
 
 const ProductItem = product => {
@@ -20,8 +20,8 @@ const ProductItem = product => {
   return (
     <div className="ProductItem">
       <img src={coverImage} alt={title} />
-      <h3>{title}</h3>
-      <p>{price}</p>
+      <h3 className="ProductItem__title">{title}</h3>
+      <p className="ProductItem__price">{price}원</p>
       <div className="ProductItem__button-wrapper">
         <Button onClick={toggleItem.bind(this, id)}>
           {wishlist.every(({ product }) => product.id !== id) ? '담기' : '빼기'}
